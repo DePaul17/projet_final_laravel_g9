@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    height: 100 vh;
+    display: flex;
+}
+
+section .imgBx {
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+section .imgBx:before {
+    position: absolute;
+    content: '';
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(rgb(217, 7, 7), rgba(172, 181, 15, 0));
+    z-index: 1;
+    mix-blend-mode: screen;
+}
+
+section .imgBx img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+
+/**************************************************/
+
+iframe {
+    position: fixed;
+    top: 60px;
+    /* Adjust this value to set the height of your navbar */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 60px);
+    /* Subtract the height of the navbar from the full height */
+    border: none;
+}
+
+.map-container {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    /* set the desired height of the map container */
+}
+
+.map-overlay {
+    position: absolute;
+    top: 70;
+    left: 80;
+    width: 355px;
+    /* set the desired width of the overlay */
+    height: 100%;
+    background-color: #fff;
+    z-index: 1;
+    border-radius: 10px;
+    /* make sure the overlay is on top of the map */
+}
+
+#map {
+    position: fixed;
+    top: -600px;
+    /* Adjust this value to set the height of your navbar */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Subtract the height of the navbar from the full height */
+    border: none;
+}
