@@ -38,10 +38,10 @@
                             </div>
                  
                             @php
-                                if(count($conversation->messages->where('read',0)->where('reciever_id',Auth()->user()->id))){
+                                if(count($conversation->messages->where('read',0)->where('receiver_id',Auth()->user()->id))){
 
                              echo ' <div class="unread_count badge rounded-pill text-light bg-danger">  '
-                                 . count($conversation->messages->where('read',0)->where('reciever_id',Auth()->user()->id)) .'</div> ';
+                                 . count($conversation->messages->where('read',0)->where('receiver_id',Auth()->user()->id)) .'</div> ';
 
                                 }
 

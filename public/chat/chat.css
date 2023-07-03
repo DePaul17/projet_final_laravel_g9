@@ -14,7 +14,7 @@
   border-bottom-left-radius: 0 !important;
 }
 .msg_body_receiver .read {
-  color: rgb(204, 204, 204);
+  color: rgb(255, 255, 255);
 }
 
 /*---------------------------*/
@@ -33,7 +33,7 @@ body {
   left: 0;
   top: 0;
   height: 100%;
-  border: 1px solid rgb(243, 242, 242);
+  /*border: 1px solid rgb(243, 242, 242);*/
   border-radius: 0;
   margin-top: 0;
   display: -webkit-box;
@@ -54,12 +54,13 @@ body {
 @media (min-width: 1025px) {
   .chat_container {
     position: fixed;
-    width: 95%;
-    left: 2.5%;
-    height: 85%;
-    border: 1px solid rgb(202, 202, 202);
+    width: 80%;
+    left: 18.5%;
+    height: 80.9%;
+    border: 1px solid rgb(0, 0, 0);
     border-radius: 9px;
-    margin-top: 15px;
+    margin-top: -35px;
+    background-color: #000000;
   }
 }
 
@@ -73,7 +74,7 @@ body {
 @media (min-width: 769px) {
   .chat_list_container {
     width: 310px;
-    border-right: 1px solid rgb(226, 226, 226);
+    border-right: 1px solid rgb(0, 0, 0);
   }
 }
 .chat_list_container .chatlist_header {
@@ -295,7 +296,7 @@ body {
 .chat_box_container .chatbox_footer {
   height: 60px;
   width: 100%;
-  border-top: 1px solid rgb(233, 233, 233);
+  /*border-top: 1px solid rgb(39, 39, 39);*/
   position: absolute;
   bottom: 0;
   display: -webkit-box;

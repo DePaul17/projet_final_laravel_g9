@@ -15,13 +15,13 @@ class MessageRead implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
  
     public $conversation_id;
-    public $reciever_id;
+    public $receiver_id;
 
-    public function __construct($conversation_id,$reciever_id)
+    public function __construct($conversation_id,$receiver_id)
     {
 
         $this->conversation_id= $conversation_id;
-        $this->reciever_id= $reciever_id;
+        $this->receiver_id= $receiver_id;
 
         //
     }
@@ -32,7 +32,7 @@ class MessageRead implements ShouldBroadcast
          return [
 
             'conversation_id'=>$this->conversation_id,
-            'reciever_id'=> $this->reciever_id,
+            'receiver_id'=> $this->receiver_id,
          ];
         # code..
     }
@@ -44,7 +44,7 @@ class MessageRead implements ShouldBroadcast
     public function broadcastOn()
     {
 
-        return new PrivateChannel('chat.'. $this->reciever_id);
+        return new PrivateChannel('chat.'. $this->receiver_id);
 
     }
 }

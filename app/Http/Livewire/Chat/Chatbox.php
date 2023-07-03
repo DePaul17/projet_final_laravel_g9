@@ -164,7 +164,7 @@ $this->receiverInstance= null;
         $this->dispatchBrowserEvent('chatSelected');
 
         Message::where('conversation_id',$this->selectedConversation->id)
-         ->where('reciever_id',auth()->user()->id)->update(['read'=> 1]);
+         ->where('receiver_id',auth()->user()->id)->update(['read'=> 1]);
 
         $this->emitSelf('broadcastMessageRead');
         # code...

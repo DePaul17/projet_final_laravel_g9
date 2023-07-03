@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'fr ',
 
     /*
     |--------------------------------------------------------------------------
@@ -210,6 +210,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'GoogleTranslate' => Stichoza\GoogleTranslate\GoogleTranslate::class,
     ])->toArray(),
 
 ];

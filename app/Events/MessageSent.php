@@ -39,7 +39,7 @@ public $receiver;
              'user_id'=>$this->user->id,
              'message'=>$this->message->id,
              'conversation_id'=>$this->conversation->id,
-             'reciever_id'=>$this->receiver->id,
+             'receiver_id'=>$this->receiver->id,
         ];
         # code...
     }

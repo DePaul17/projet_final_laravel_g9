@@ -13,7 +13,13 @@ class MenuController extends Controller
 
     }
 
-    public function menue1(){
+    public function menued(){
+
+        return view('wp-admin/Menue');
+
+    }
+
+    public function menuef(){
 
         return view('wp-admin/Menuef');
 

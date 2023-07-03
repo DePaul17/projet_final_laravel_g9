@@ -48,7 +48,7 @@ $this->receiverInstance= null;
         //get selected conversation 
 
         if ($conversation->sender_id == $this->auth_id) {
-            $this->receiverInstance = User::firstWhere('id', $conversation->reciever_id);
+            $this->receiverInstance = User::firstWhere('id', $conversation->receiver_id);
             # code...
         } else {
             $this->receiverInstance = User::firstWhere('id', $conversation->sender_id);
@@ -65,7 +65,7 @@ $this->receiverInstance= null;
 
         $this->auth_id = auth()->id();
         $this->conversations = Conversation::where('sender_id', $this->auth_id)
-            ->orWhere('reciever_id', $this->auth_id)->orderBy('last_time_message', 'DESC')->get();
+            ->orWhere('receiver_id', $this->auth_id)->orderBy('last_time_message', 'DESC')->get();
 
         # code...
     }

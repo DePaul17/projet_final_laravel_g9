@@ -1,64 +1,153 @@
 <div>
-    {{-- Care about people's approval and you will be their prisoner. --}}
+    {{-- Stop trying to control. --}}
 
-    <div class="chatlist_header">
+    @if ($selectedConversation)
+        <div class="chatbox_header">
 
-        <div class="title">
-            Chat
+            <div class="return">
+                <i class="bi bi-arrow-left"></i>
+            </div>
+
+            <div class="img_container">
+                <img src="https://ui-avatars.com/api/?name={{ $receiverInstance->name }}" alt="">
+
+            </div>
+
+
+            <div class="name">
+                {{ $receiverInstance->name }}
+            </div>
+
+
+            <div class="info">
+
+                <div class="info_item">
+                    <i class="bi bi-telephone-fill"></i>
+                </div>
+
+                <div class="info_item">
+                    <i class="bi bi-image"></i>
+                </div>
+
+                <div class="info_item">
+                    <i class="bi bi-info-circle-fill"></i>
+                </div>
+            </div>
         </div>
 
-        <div class="img_container">
-            <img src="https://ui-avatars.com/api/?background=0D8ABC&color=fff&name={{auth()->user()->name}}" alt="">
-        </div>
-    </div>
+        <div class="chatbox_body">
+            @foreach ($messages as $message)
+                <div class="msg_body  {{ auth()->id() == $message->sender_id ? 'msg_body_me' : 'msg_body_receiver' }}"
+                    style="width:80%;max-width:80%;max-width:max-content">
 
-    <div class="chatlist_body">
-
-        @if (count($conversations) > 0)
-            @foreach ($conversations as $conversation)
-                <div class="chatlist_item " wire:key='{{$conversation->id}}' wire:click="$emit('chatUserSelected', {{$conversation}},{{$this->getChatUserInstance($conversation, $name = 'id') }})">
-                    <div class="chatlist_img_container">
-
-                        <img src="https://ui-avatars.com/api/?name={{$this->getChatUserInstance($conversation, $name = 'name')}}"
-                            alt="">
-                    </div>
-
-                    <div class="chatlist_info">
-                        <div class="top_row">
-                            <div class="list_username">{{ $this->getChatUserInstance($conversation, $name = 'name') }}
-                            </div>
-                            <span class="date">
-                                {{ $conversation->messages->last()?->created_at->shortAbsoluteDiffForHumans() }}</span>
+                    {{ $message->body }}
+                    <div class="msg_body_footer">
+                        <div class="date">
+                            {{ $message->created_at->format('m: i a') }}
                         </div>
 
-                        <div class="bottom_row">
-
-                            <div class="message_body text-truncate">
-                                {{ $conversation->messages->last()->body }}
-                            </div>
-                 
+                        <div class="read">
                             @php
-                                if(count($conversation->messages->where('read',0)->where('reciever_id',Auth()->user()->id))){
+                                
+                          if($message->user->id === auth()->id()){
 
-                             echo ' <div class="unread_count badge rounded-pill text-light bg-danger">  '
-                                 . count($conversation->messages->where('read',0)->where('reciever_id',Auth()->user()->id)) .'</div> ';
+                
+                                    if($message->read == 0){
 
-                                }
+
+                                        echo'<i class="bi bi-check2 status_tick "></i> ';
+                                    }
+                                    else {
+                                        echo'<i class="bi bi-check2-all text-primary  "></i> ';
+                                    }
+
+                          }
+
 
                             @endphp
+                      
 
                         </div>
                     </div>
                 </div>
-
-
-
             @endforeach
 
+        </div>
 
-        @else
-            you have no conversations
-        @endif
 
-    </div>
+        <script>
+            $(".chatbox_body").on('scroll', function() {
+                // alert('aahsd');
+                var top = $('.chatbox_body').scrollTop();
+                //   alert('aasd');
+                if (top == 0) {
+
+                    window.livewire.emit('loadmore');
+                }
+
+            });
+        </script>
+
+
+        <script>
+            window.addEventListener('updatedHeight', event => {
+
+                let old = event.detail.height;
+                let newHeight = $('.chatbox_body')[0].scrollHeight;
+
+                let height = $('.chatbox_body').scrollTop(newHeight - old);
+
+
+                window.livewire.emit('updateHeight', {
+                    height: height,
+                });
+
+
+            });
+        </script>
+    @else
+        <div class="fs-4 text-center text-primary mt-5">
+            no conversasion selected
+        </div>
+
+
+
+
+    @endif
+
+
+    <script>
+        window.addEventListener('rowChatToBottom', event => {
+
+            $('.chatbox_body').scrollTop($('.chatbox_body')[0].scrollHeight);
+
+        });
+    </script>
+
+
+<script>
+    $(document).on('click','.return',function(){
+
+
+window.livewire.emit('resetComponent');
+
+    });
+</script>
+ 
+
+<script>
+
+window.addEventListener('markMessageAsRead',event=>{
+ var value= document.querySelectorAll('.status_tick');
+
+ value.array.forEach(element, index => {
+     
+
+    element.classList.remove('bi bi-check2');
+    element.classList.add('bi bi-check2-all','text-primary');
+ });
+
+});
+
+</script>
 </div>

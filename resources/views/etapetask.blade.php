@@ -59,11 +59,9 @@
                     <td>{{ $tache->libelle }}</td>
                     <td>
                         <div class="d-flex justify-content-end">
-                            <form method="" action="">
-                                <button type="submit" class="btn btn-white bg bg-white  me-2" > 
-                                    <img src="{{asset('client/images/crayon.png')}}" alt="Supprimer" style="width: 20px; height: 20px;">
-                                </button>
-                            </form>
+                        <a href="/updatetache/{{$tache->id}}" class="btn btn-white bg bg-white  me-2" > 
+                                <img src="{{asset('client/images/crayon.png')}}" alt="editer" style="width: 20px; height: 20px;">
+                            </a>
                             <form method="POST" action="{{ route('delete_tache', ['id' => $tache->id]) }}">
                                 @csrf
                                 @method('DELETE')

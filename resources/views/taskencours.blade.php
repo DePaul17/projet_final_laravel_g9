@@ -71,10 +71,9 @@
             <div class="alert alert-warning text-center" role="alert">
                 Aucun projet en cours!
             </div>
-    @endisset
+    @endisset   
 
-
-    <script>
+<script>
         // Récupérer la div d'alerte
         const alertDiv = document.getElementById('myAlert');
 

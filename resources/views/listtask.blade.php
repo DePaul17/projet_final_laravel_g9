@@ -31,11 +31,9 @@
                                             <img src="client/images/supprimer.png" alt="Supprimer" style="width: 20px; height: 20px;">
                                         </button>
                                     </form>
-                                    <form method="" action="">
-                                        <button type="submit" class="btn btn-light bg bg-light me-2" data-bs-toggle="modal" data-bs-target="#exampleModal" data-projet-id="{{$projet->id}}">
-                                            <img src="client/images/mise-a-jour.png" alt="Modifier" style="width: 20px; height: 20px;">
-                                        </button>  
-                                    </form>
+                                    <a href="/updatetask/{{$projet->id}}" class="btn btn-light bg bg-light me-2">
+                                        <img src="client/images/mise-a-jour.png" alt="Modifier" style="width: 20px; height: 20px;">
+                                    </a>
                                     <a href="/etapetask/{{$projet->id}}" class="sidebar-link btn btn-info bg bg-info btn-block  me-2">
                                         <img src="client/images/etapes.png" alt="etapes" style="width: 20px; height: 20px;">
                                     </a>

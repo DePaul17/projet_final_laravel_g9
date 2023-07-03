@@ -71,6 +71,7 @@
                 <span class="hide-menu">Projets en cours</span>
               </a>
             </li>
+            </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="./finishtask" aria-expanded="false">
                 <span>
@@ -84,13 +85,20 @@
               <span class="hide-menu">Collaborations</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="http://127.0.0.1:8000/chats" target="_blank" aria-expanded="false">
+              <a class="sidebar-link" href="http://127.0.0.1:8000/ChatsUser" aria-expanded="false">
                 <span>
-                  <i class="ti ti-user-plus"></i>
+                <i class="ti ti-mail fs-6"></i>
                 </span>
-                <span class="hide-menu">Chat membres</span>
+                <span class="hide-menu">Chat</span>
               </a>
             </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="http://127.0.0.1:8000/yomibot" aria-expanded="false">
+                <span>
+                  <i class="ti ti-cards"></i>
+                </span>
+                <span class="hide-menu">Yomi</span>
+              </a>
           </ul>
           <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
             <div class="d-flex">
@@ -131,17 +139,19 @@
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
              
               <li class="nav-item dropdown">
-              <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  <div>{{ Auth::user()->name }}</div>&nbsp; &nbsp;
-                  <img src="{{asset('src/assets/images/profile/Basic_Ui__186_-removebg-preview.png')}}" alt="" width="35" height="35" class="rounded-circle">
-                 
-                </a>
+              <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
+                <div>{{ Auth::user()->name }}</div>&nbsp; &nbsp;
+                @if (empty(Auth::user()->photo))
+                    <img src="{{ asset('src/assets/images//logos/user-1.jpg') }}" alt="" width="35" height="35" class="rounded-circle">
+                @else
+                    <img src="{{ asset('src/assets/images/logos/' . Auth::user()->photo) }}" alt="" width="35" height="35" class="rounded-circle">
+                @endif
+            </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
                   <a href="http://127.0.0.1:8000/profile" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-user fs-6"></i>
-                      <p class="mb-0 fs-3">Proflie</p>
+                      <p class="mb-0 fs-3">Profile</p>
                     </a>
                     <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-mail fs-6"></i>
@@ -151,6 +161,11 @@
                       <i class="ti ti-list-check fs-6"></i>
                       <p class="mb-0 fs-3">My Task</p>
                     </a>
+
+                    <button type="button" class="d-flex align-items-center gap-2 dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">  
+                      <i class="ti ti-eye fs-6"></i>
+                      <p class="mb-0 fs-3">Projets archivés</p>
+                    </button>
                   </div>
 
                   <div class="btn btn-outline-dark mx-3 mt-2 d-block">
@@ -172,7 +187,7 @@
         <div class="container-fluid">
             @yield('content')
             <div class="py-6 px-6 text-center">
-                <p class="mb-0 fs-4">Design and Developed by Nafissa Distributed by <a href="/welcome">TaskEasy</a></p>
+               
             </div>
       </div>
     </div>
@@ -185,5 +200,26 @@
   <script src="{{asset('src/assets/libs/simplebar/dist/simplebar.js')}}"></script>
   <script src="{{asset('src/assets/js/dashboard.js')}}"></script>
 </body>
-
-</html>
+<!-- Modal authentificate -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Es-ce vraiment vous ?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="POST" action="{{ route('password.verify') }}">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Mot de passe</label>
+                                <input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-danger" onclick="clearFields()">Effacer</button>
+                            <button type="submit" class="btn btn-success">Continuer</button>
+                        </div>
+                    </form>
+                </div>
+          </div>

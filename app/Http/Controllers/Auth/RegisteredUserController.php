@@ -34,7 +34,9 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'firstname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-           // 'role' => ['required', 'numeric', 'between:1,3'],
+            'sexe' => ['required', 'string',  'max:255'],
+            'datenaiss' => ['required', 'string',  'max:255'],
+            'photo' => ['required', 'string',  'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -43,12 +45,23 @@ class RegisteredUserController extends Controller
             'firstname' => $request ->firstname,
             'email' => $request->email,
             'role' => 2,
+            'sexe' => $request->sexe,
+            'photo' => $request->photo,
+            'datenaiss' => $request->datenaiss,
             'password' => Hash::make($request->password),
         ]);
         
 
         event(new Registered($user));
         Auth::login($user);
-        return redirect(RouteServiceProvider::HOME);
+    
+        // Redirection en fonction du rôle de l'utilisateur
+        if ($user->role === 1) {
+            return redirect()->route('/dashboard');
+        } elseif ($user->role === 2) {
+            return redirect()->route('page_admin');
+        } else {
+            return redirect(RouteServiceProvider::HOME);
+        }
     }
 }
