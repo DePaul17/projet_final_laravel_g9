@@ -41,6 +41,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
+    public function projet()
+    {
+        return $this->hasMany(Projet::class);
+    }
+
     /**
      * The attributes that should be cast.
      *

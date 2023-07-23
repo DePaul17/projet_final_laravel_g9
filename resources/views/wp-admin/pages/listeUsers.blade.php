@@ -1,5 +1,13 @@
 @include('wp-admin/Menue')
 
+<style>
+  .a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+</style>
+
 <div class="row">
   <div class="col-12 grid-margin">
     <div class="card">
@@ -45,7 +53,9 @@
                 <td>{{ $user['datenaiss'] }}</td>
                 <td>{{ $user['sexe'] }}</td>
                 <td>
-                  <div class="badge badge-outline-success">Projets</div>
+                  <div class="badge badge-outline-success">
+                    <a href="{{ route('listproject', ['userId' => $user->id]) }}" style="text-decoration: none; color: inherit; cursor: pointer;">Projets</a>
+                  </div>
                 </td> 
               </tr>
               @endforeach

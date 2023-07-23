@@ -16,7 +16,7 @@ class HomeController extends Controller
         }
 
         if($role ==2){
-            return view('dashboard');
+            return view('/dashboard');
         }
     }
 }

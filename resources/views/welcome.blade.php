@@ -774,7 +774,7 @@
                                 <div class="form-check form-check-inline">
                                 <span class="input-group-text" id="inputGroupPrepend">
                                     <input class="form-check-input" type="radio" name="sexe" id="sexe2" value="homme">
-                                    <label class="form-check-label" for="sexe">Home</label>
+                                    <label class="form-check-label" for="sexe">Homme</label>
                                 </span>
                                 </div>
                             </div>

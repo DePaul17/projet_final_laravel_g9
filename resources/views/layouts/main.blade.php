@@ -33,26 +33,27 @@
           <ul id="sidebarnav">
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Accueil</span>
+              <span class="hide-menu">{{ GoogleTranslate::trans('Accueil',app()->getLocale()) }}
+</span>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="/dashboard" aria-expanded="false">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
-                <span class="hide-menu">Dashboard</span>
+                <span class="hide-menu">{{ GoogleTranslate::trans('Dashboard',app()->getLocale()) }}</span>
               </a>
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Actions</span>
+              <span class="hide-menu">{{ GoogleTranslate::trans('Actions',app()->getLocale()) }}</span>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="/addtask" aria-expanded="false">
                 <span>
                   <i class="ti ti-plus"></i>
                 </span>
-                <span class="hide-menu">Ajouter un projet</span>
+                <span class="hide-menu">{{ GoogleTranslate::trans('Ajouter un projet',app()->getLocale()) }}</span>
               </a>
             </li>
             <li class="sidebar-item">
@@ -60,7 +61,7 @@
                 <span>
                   <i class="ti ti-file-description "></i>
                 </span>
-                <span class="hide-menu">Liste des projets</span>
+                <span class="hide-menu">{{ GoogleTranslate::trans('Liste des projets',app()->getLocale()) }}</span>
               </a>
             </li>
             <li class="sidebar-item">
@@ -68,7 +69,7 @@
                 <span>
                   <i class="ti ti-cards"></i>
                 </span>
-                <span class="hide-menu">Projets en cours</span>
+                <span class="hide-menu">{{ GoogleTranslate::trans('Projets en cours',app()->getLocale()) }}</span>
               </a>
             </li>
             </li>
@@ -77,19 +78,19 @@
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>
-                <span class="hide-menu">Projets terminés</span>
+                <span class="hide-menu">{{ GoogleTranslate::trans('Projets terminés',app()->getLocale()) }}</span>
               </a>
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Collaborations</span>
+              <span class="hide-menu">{{ GoogleTranslate::trans('Collaborations',app()->getLocale()) }}</span>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="http://127.0.0.1:8000/ChatsUser" aria-expanded="false">
                 <span>
                 <i class="ti ti-mail fs-6"></i>
                 </span>
-                <span class="hide-menu">Chat</span>
+                <span class="hide-menu">{{ GoogleTranslate::trans('Chat',app()->getLocale()) }}</span>
               </a>
             </li>
             <li class="sidebar-item">
@@ -97,7 +98,7 @@
                 <span>
                   <i class="ti ti-cards"></i>
                 </span>
-                <span class="hide-menu">Yomi</span>
+                <span class="hide-menu">{{ GoogleTranslate::trans('Yomi',app()->getLocale()) }}</span>
               </a>
           </ul>
           <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
@@ -133,6 +134,18 @@
                 <i class="ti ti-bell-ringing"></i>
                 <div class="notification bg-primary rounded-circle"></div>
               </a>
+              <div class="card-body">
+                            <div class="row">
+                                <select class="form-select changeLang">
+                                    <option value="en" {{ session()->get('locale') == 'en'?'selected':'' }}>English</option>
+                                    <option value="fr" {{ session()->get('locale') == 'fr'?'selected':'' }}>Francais</option>
+                                    <option value="ar" {{ session()->get('locale') == 'ar'?'selected':'' }}>Arabe</option>
+                                    <option value="tr" {{ session()->get('locale') == 'tr'?'selected':'' }}>Turc</option>
+                                    <option value="ja" {{ session()->get('locale') == 'ja'?'selected':'' }}>Japonais</option>
+                                    <option value="zh" {{ session()->get('locale') == 'zh'?'selected':'' }}>Chine</option>
+                                </select>
+                            </div>
+                        </div>
             </li>
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
@@ -151,20 +164,20 @@
                   <div class="message-body">
                   <a href="http://127.0.0.1:8000/profile" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-user fs-6"></i>
-                      <p class="mb-0 fs-3">Profile</p>
+                      <p class="mb-0 fs-3">{{ GoogleTranslate::trans('Profile',app()->getLocale()) }}</p>
                     </a>
                     <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-mail fs-6"></i>
-                      <p class="mb-0 fs-3">My Account</p>
+                      <p class="mb-0 fs-3">{{ GoogleTranslate::trans('My Account',app()->getLocale()) }}</p>
                     </a>
                     <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-list-check fs-6"></i>
-                      <p class="mb-0 fs-3">My Task</p>
+                      <p class="mb-0 fs-3">{{ GoogleTranslate::trans('My Task',app()->getLocale()) }}</p>
                     </a>
 
                     <button type="button" class="d-flex align-items-center gap-2 dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">  
                       <i class="ti ti-eye fs-6"></i>
-                      <p class="mb-0 fs-3">Projets archivés</p>
+                      <p class="mb-0 fs-3">{{ GoogleTranslate::trans('Projets archivés',app()->getLocale()) }}</p>
                     </button>
                   </div>
 
@@ -205,21 +218,28 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Es-ce vraiment vous ?</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">{{ GoogleTranslate::trans('Es-ce vraiment vous ?',app()->getLocale()) }}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form method="POST" action="{{ route('password.verify') }}">
                         @csrf
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Mot de passe</label>
+                                <label for="exampleFormControlInput1" class="form-label">{{ GoogleTranslate::trans('Mot de passe',app()->getLocale()) }}</label>
                                 <input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-danger" onclick="clearFields()">Effacer</button>
-                            <button type="submit" class="btn btn-success">Continuer</button>
+                            <button class="btn btn-danger" onclick="clearFields()">{{ GoogleTranslate::trans('Effacer',app()->getLocale()) }}</button>
+                            <button type="submit" class="btn btn-success">{{ GoogleTranslate::trans('Continuer',app()->getLocale()) }}</button>
                         </div>
                     </form>
                 </div>
           </div>
+          <script type="text/javascript">
+        var url = "{{ route('changeLang') }}";
+        $('.changeLang').change(function(event) {
+           //alert();
+            window.location.href = url+"?lang="+$(this).val();
+        });
+    </script>

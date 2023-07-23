@@ -8,20 +8,20 @@
                         <form action="/addtask_load" method="POST">
                         @csrf     
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Libelle</label>
+                                <label for="exampleFormControlInput1" class="form-label">{{ GoogleTranslate::trans('Libelle',app()->getLocale()) }}</label>
                                 <input type="text" class="form-control" id="libelle" placeholder="ex: Realisation d'un serveur web" name="libelle" autocomplete="off" required>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                                <label for="exampleFormControlTextarea1" class="form-label">{{ GoogleTranslate::trans('Description',app()->getLocale()) }}</label>
                                 <textarea class="form-control" id="description" rows="3" name="description" autocomplete="off" required></textarea>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Date de debut</label>
+                                <label for="exampleFormControlInput1" class="form-label">{{ GoogleTranslate::trans('Date de debut',app()->getLocale()) }}</label>
                                 <input type="date" class="form-control" id="datedebut" name="datedebut" autocomplete="off" min="{{ date('Y-m-d') }}" required>
                             </div>
                             <div class="text-center">
-                                <button class="btn btn-danger" onclick="clearFields()">Effacer</button>
-                                <button class="btn btn-primary">Ajouter</button>
+                                <button class="btn btn-danger" onclick="clearFields()">{{ GoogleTranslate::trans('Effacer',app()->getLocale()) }}</button>
+                                <button class="btn btn-primary">{{ GoogleTranslate::trans('Ajouter',app()->getLocale()) }}</button>
                             </div>
                             <br>
                         </form>

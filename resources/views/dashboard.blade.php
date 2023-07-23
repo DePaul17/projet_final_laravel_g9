@@ -225,7 +225,6 @@
   <script>
     var enCours = {!! json_encode($projetencours) !!};
     var termines = {!! json_encode($projets_termines) !!};
-
     var data = {
         labels: ['En cours', 'Terminés'],
         datasets: [{
@@ -234,7 +233,6 @@
             backgroundColor: ['rgb(54, 162, 235)', 'rgb(75, 192, 192)']
         }]
     };
-
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',

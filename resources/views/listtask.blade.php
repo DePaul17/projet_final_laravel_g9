@@ -60,20 +60,20 @@
                                         <input type="hidden" name="projet_id" id="projet_id">
                                         <div class="modal-body">
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">Libelle</label>
+                                                <label for="exampleFormControlInput1" class="form-label">{{ GoogleTranslate::trans('Libelle',app()->getLocale()) }}</label>
                                                 <input type="text" class="form-control" id="libelle" name="libelle" 
                                                 placeholder="Renommer votre projet ici" autocomplete="off" 
                                                     value="{{ $projet->libelle }}"
                                                 required>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                                                <label for="exampleFormControlTextarea1" class="form-label">{{ GoogleTranslate::trans('Description',app()->getLocale()) }}</label>
                                                 <textarea class="form-control" id="description" rows="3" name="description" autocomplete="off"  text-center required>
                                                     {{ $projet->description }}
                                                 </textarea>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">Date de debut</label>
+                                                <label for="exampleFormControlInput1" class="form-label">{{ GoogleTranslate::trans('Date de debut',app()->getLocale()) }}</label>
                                                 <input type="date" class="form-control" id="datedebut" name="datedebut" placeholder="YYYY-MM-DD" 
                                                 autocomplete="off" 
                                                     value="{{ $projet->datedebut }}"
@@ -82,7 +82,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <div class="d-flex justify-content-center">
-                                                <button type="submit" class="bg bg-secondary btn btn-secondary">Appliquer les changements</button>
+                                                <button type="submit" class="bg bg-secondary btn btn-secondary">{{ GoogleTranslate::trans('Appliquer les changements',app()->getLocale()) }}</button>
                                             </div>
                                         </div>
                                     </form>
@@ -94,12 +94,12 @@
             </table>
         @else
             <div class="alert alert-warning text-center" role="alert">
-                Aucun projet disponible!
+            {{ GoogleTranslate::trans('Aucun projet disponible!',app()->getLocale()) }}  
             </div>
         @endif
     @else
             <div class="alert alert-warning text-center" role="alert">
-                Aucun projet disponible!
+            {{ GoogleTranslate::trans('Aucun projet disponible!',app()->getLocale()) }}
             </div>
     @endisset
 

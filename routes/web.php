@@ -138,6 +138,7 @@ Route::get('/chat{key?}',Main::class)->name('chat');
 Route::get('wp-admin/pages/listeUsers', [AdminUserController::class, 'index'])->name('create');
 Route::get('wp-admin/pages/charts', [AdminUserController::class, 'charts'])->name('charts');
 Route::get('wp-admin/pages/chatsAdmin', [AdminUserController::class, 'chatAdmin'])->name('chatAdmin');
+Route::get('/projects/{userId}', [AdminUserController::class, 'displayUserProjects'])->name('listproject');
 //Route::get("locale/{langue}",[LangueController::class,"setLangue"]);
     
 

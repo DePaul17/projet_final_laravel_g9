@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
@@ -78,11 +79,36 @@ class ProjetController extends Controller
         return view('listtask', compact('projets'));
     }
 
+    public function updatetask_form($id)
+    {
+        $projet = Projet::find($id);
+        return view('updatetask', compact('projet'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $projet = Projet::findOrFail($id);
+
+        $request->validate([
+            'libelle' => 'required',
+            'description' => 'required',
+            'datedebut' => 'required|date',
+        ]);
+
+        $projet->libelle = $request->input('libelle');
+        $projet->description = $request->input('description');
+        $projet->datedebut = $request->input('datedebut');
+
+        $projet->save();
+
+        return redirect('/listtask');
+    }
+
     public function updatetache_form($id)
     {
         $tache = Tache::find($id);
         return view('updatetache', compact('tache'));
-    }x
+    }
 
 
     public function update_tache(Request $request, $id)
@@ -352,4 +378,17 @@ class ProjetController extends Controller
         $element->delete();
         return redirect()->back();
     }  
+
+    public function archive_form()
+    {
+        // Récupération de l'id de l'utilisateur connecté
+        $userId = Auth::id();
+
+        // Récupération des projets correspondant à l'id utilisateur et à l'état 2
+        $archive = Projet::where('user_id', $userId)
+            ->where('etat', 4)
+            ->get();
+
+        return view('archive', compact('archive'));
+    }
 }
